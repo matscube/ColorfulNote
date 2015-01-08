@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         view.addSubview(blueView)
         
         let gesture = UISwipeGestureRecognizer()
-        
+        view.addGestureRecognizer(gesture)
     }
 
     override func didReceiveMemoryWarning() {
