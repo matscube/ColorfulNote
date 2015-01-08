@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         view.addSubview(blueView)
         
         let gesture = UISwipeGestureRecognizer()
+        gesture.addTarget(self, action: "create")
+        view.addGestureRecognizer(gesture)
+    }
+    
+    func create() {
         
     }
 
