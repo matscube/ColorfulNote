@@ -25,7 +25,8 @@ class ViewController: UIViewController {
     }
     
     func create() {
-        
+        let view = UIView()
+        blueView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.9)
     }
 
     override func didReceiveMemoryWarning() {
