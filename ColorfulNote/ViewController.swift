@@ -20,13 +20,17 @@ class ViewController: UIViewController {
         view.addSubview(blueView)
         
         let gesture = UISwipeGestureRecognizer()
+        gesture.numberOfTouchesRequired = 1
+        gesture.direction = UISwipeGestureRecognizerDirection.Left
         gesture.addTarget(self, action: "create")
-        view.addGestureRecognizer(gesture)
+        blueView.addGestureRecognizer(gesture)
     }
     
     func create() {
-        let view = UIView()
-        blueView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.9)
+        let newView = UIView()
+        newView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.9)
+        newView.frame = CGRectMake(0, 0, 50, 50)
+        view.addSubview(newView)
     }
 
     override func didReceiveMemoryWarning() {
