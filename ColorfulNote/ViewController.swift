@@ -22,11 +22,14 @@ class ViewController: UIViewController {
         let gesture = UISwipeGestureRecognizer()
         gesture.numberOfTouchesRequired = 1
         gesture.direction = UISwipeGestureRecognizerDirection.Left
-        gesture.addTarget(self, action: "create")
+        gesture.addTarget(self, action: "create:")
         blueView.addGestureRecognizer(gesture)
     }
     
-    func create() {
+    func create(gesture: UISwipeGestureRecognizer) {
+        let touch = gesture.locationInView(view)
+        println("\(touch.x), \(touch.y)")
+        
         let newView = UIView()
         newView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.9)
         newView.frame = CGRectMake(0, 0, 50, 50)
