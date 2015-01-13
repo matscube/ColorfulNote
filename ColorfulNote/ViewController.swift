@@ -16,24 +16,70 @@ class ViewController: UIViewController {
         
         let blueView = UIView()
         blueView.frame = CGRectMake(view.frame.width - 50, 100, 50, 50)
-        blueView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.9)
+        blueView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.8)
         view.addSubview(blueView)
         
-        let gesture = UISwipeGestureRecognizer()
-        gesture.numberOfTouchesRequired = 1
-        gesture.direction = UISwipeGestureRecognizerDirection.Left
-        gesture.addTarget(self, action: "create:")
-        blueView.addGestureRecognizer(gesture)
+        let redView = UIView()
+        redView.frame = CGRectMake(0, 100, 50, 50)
+        redView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
+        view.addSubview(redView)
+
+        let yellowView = UIView()
+        yellowView.frame = CGRectMake(0, 200, 50, 50)
+        yellowView.backgroundColor = UIColor(red: 1, green: 1, blue: 0, alpha: 0.8)
+        view.addSubview(yellowView)
+
+        let greenView = UIView()
+        greenView.frame = CGRectMake(view.frame.width - 50, 200, 50, 50)
+        greenView.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
+        view.addSubview(greenView)
+
+        let blueGesture = UIPanGestureRecognizer()
+        blueGesture.addTarget(self, action: "createBlue:")
+        blueView.addGestureRecognizer(blueGesture)
+        let redGesture = UIPanGestureRecognizer()
+        redGesture.addTarget(self, action: "createRed:")
+        redView.addGestureRecognizer(redGesture)
+        let yellowGesture = UIPanGestureRecognizer()
+        yellowGesture.addTarget(self, action: "createYellow:")
+        yellowView.addGestureRecognizer(yellowGesture)
+        let greenGesture = UIPanGestureRecognizer()
+        greenGesture.addTarget(self, action: "createGreen:")
+        greenView.addGestureRecognizer(greenGesture)
     }
     
-    func create(gesture: UISwipeGestureRecognizer) {
+    var newView: UIView?
+    func createRed(gesture: UIPanGestureRecognizer) {
+        let color = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
+        create(gesture, color: color)
+    }
+    func createBlue(gesture: UIPanGestureRecognizer) {
+        let color = UIColor(red: 0, green: 0, blue: 1, alpha: 0.8)
+        create(gesture, color: color)
+    }
+    func createYellow(gesture: UIPanGestureRecognizer) {
+        let color = UIColor(red: 1, green: 1, blue: 0, alpha: 0.8)
+        create(gesture, color: color)
+    }
+    func createGreen(gesture: UIPanGestureRecognizer) {
+        let color = UIColor(red: 0, green: 1, blue: 0, alpha: 0.8)
+        create(gesture, color: color)
+    }
+    
+    func create(gesture: UIPanGestureRecognizer, color: UIColor) {
         let touch = gesture.locationInView(view)
-        println("\(touch.x), \(touch.y)")
-        
-        let newView = UIView()
-        newView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.9)
-        newView.frame = CGRectMake(0, 0, 50, 50)
-        view.addSubview(newView)
+        let state = gesture.state
+        if state == UIGestureRecognizerState.Began {
+            newView = UIView()
+            newView!.backgroundColor = color
+            newView!.frame = CGRectMake(0, 0, 50, 50)
+            newView!.center = CGPointMake(touch.x, touch.y)
+            view.addSubview(newView!)
+        } else if state == UIGestureRecognizerState.Changed {
+            newView!.center = CGPointMake(touch.x, touch.y)
+        } else if state == UIGestureRecognizerState.Ended {
+            newView = nil
+        }
     }
 
     override func didReceiveMemoryWarning() {
