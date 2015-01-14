@@ -8,6 +8,10 @@
 
 import UIKit
 
+class ColorFullView: UIView {
+    
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
