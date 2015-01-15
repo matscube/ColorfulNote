@@ -8,7 +8,19 @@
 
 import UIKit
 
-class ColorFullView: UIView {
+class ColorfulView: UIView {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesBegan(touches, withEvent: event)
+        
+    }
+    
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesMoved(touches, withEvent: event)
+        
+        let touch = touches.anyObject()!
+        let location = touch.locationInView(superview)
+        self.center = location
+    }
     
 }
 
@@ -74,7 +86,7 @@ class ViewController: UIViewController {
         let touch = gesture.locationInView(view)
         let state = gesture.state
         if state == UIGestureRecognizerState.Began {
-            newView = UIView()
+            newView = ColorfulView()
             newView!.backgroundColor = color
             newView!.frame = CGRectMake(0, 0, 50, 50)
             newView!.center = CGPointMake(touch.x, touch.y)
