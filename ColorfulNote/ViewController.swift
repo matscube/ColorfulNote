@@ -9,17 +9,24 @@
 import UIKit
 
 class ColorfulView: UIView {
+
+    private var locInSelf: CGPoint?
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
         
+        let touch = touches.anyObject()! as UITouch
+        locInSelf = touch.locationInView(self)
+        superview!.bringSubviewToFront(self)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         super.touchesMoved(touches, withEvent: event)
         
-        let touch = touches.anyObject()!
-        let location = touch.locationInView(superview)
-        self.center = location
+        let touch = touches.anyObject()! as UITouch
+        let locationInSuperView = touch.locationInView(superview)
+        let x = locationInSuperView.x - locInSelf!.x
+        let y = locationInSuperView.y - locInSelf!.y
+        self.frame.origin = CGPointMake(x, y)
     }
     
 }
