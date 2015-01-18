@@ -9,6 +9,18 @@
 import UIKit
 
 class ColorfulView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let textView = UITextView()
+        textView.frame = CGRectMake(10, 10, 40, 40)
+        textView.backgroundColor = UIColor.clearColor()
+        self.addSubview(textView)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private var locInSelf: CGPoint?
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -93,9 +105,9 @@ class ViewController: UIViewController {
         let touch = gesture.locationInView(view)
         let state = gesture.state
         if state == UIGestureRecognizerState.Began {
-            newView = ColorfulView()
+            let frame = CGRectMake(0, 0, 50, 50)
+            newView = ColorfulView(frame: frame)
             newView!.backgroundColor = color
-            newView!.frame = CGRectMake(0, 0, 50, 50)
             newView!.center = CGPointMake(touch.x, touch.y)
             view.addSubview(newView!)
         } else if state == UIGestureRecognizerState.Changed {
