@@ -17,9 +17,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="Fsu-ZA-6f9" kind="modal" identifier="EditSegue" id="jUL-Gm-xqf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="232.5" y="328.5"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="kru-Qs-dQ4">
@@ -30,6 +34,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5sG-nB-vM5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TvI-Mu-hj3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
