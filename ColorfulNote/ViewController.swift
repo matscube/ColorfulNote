@@ -12,14 +12,24 @@ class ColorfulView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let textView = UITextView()
+/*        let textView = UITextView()
         textView.frame = CGRectMake(10, 10, 40, 40)
         textView.backgroundColor = UIColor.clearColor()
-        self.addSubview(textView)
+        self.addSubview(textView)*/
+        
+        var tapGesture = UITapGestureRecognizer(target: self, action: "edit")
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(tapGesture)
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    var viewTapped: ((view: UIView) -> Void)?
+    func edit() {
+        viewTapped?(view: self)
     }
 
     private var locInSelf: CGPoint?
@@ -83,7 +93,7 @@ class ViewController: UIViewController {
         greenView.addGestureRecognizer(greenGesture)
     }
     
-    var newView: UIView?
+    var newView: ColorfulView?
     func createRed(gesture: UIPanGestureRecognizer) {
         let color = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
         create(gesture, color: color)
@@ -109,6 +119,10 @@ class ViewController: UIViewController {
             newView = ColorfulView(frame: frame)
             newView!.backgroundColor = color
             newView!.center = CGPointMake(touch.x, touch.y)
+            newView!.viewTapped = {
+                [unowned self] (view: UIView) in
+                self.edit()
+            }
             view.addSubview(newView!)
         } else if state == UIGestureRecognizerState.Changed {
             newView!.center = CGPointMake(touch.x, touch.y)
@@ -122,6 +136,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func edit() {
+        self.performSegueWithIdentifier("EditSegue", sender: self)
+    }
+    
 }
 

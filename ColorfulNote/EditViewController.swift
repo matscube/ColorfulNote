@@ -14,6 +14,18 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        var button = UIButton()
+        button.frame = CGRectMake(100, 100, 100, 100)
+        button.setTitle("back", forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        button.exclusiveTouch = true
+        button.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(button)
+    }
+    
+    func back() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
