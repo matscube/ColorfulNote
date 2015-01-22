@@ -22,6 +22,10 @@ class EditViewController: UIViewController {
         button.exclusiveTouch = true
         button.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(button)
+        
+        var textView = UITextView()
+        textView.frame = CGRectMake(100, 300, 100, 100)
+        view.addSubview(textView)
     }
     
     func back() {
