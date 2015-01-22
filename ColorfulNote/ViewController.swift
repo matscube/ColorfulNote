@@ -94,6 +94,7 @@ class ViewController: UIViewController {
     }
     
     var newView: ColorfulView?
+    var views = [ColorfulView]()
     func createRed(gesture: UIPanGestureRecognizer) {
         let color = UIColor(red: 1, green: 0, blue: 0, alpha: 0.8)
         create(gesture, color: color)
@@ -127,6 +128,7 @@ class ViewController: UIViewController {
         } else if state == UIGestureRecognizerState.Changed {
             newView!.center = CGPointMake(touch.x, touch.y)
         } else if state == UIGestureRecognizerState.Ended {
+            views.append(newView!)
             newView = nil
         }
     }
