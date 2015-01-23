@@ -10,6 +10,7 @@ import UIKit
 
 class EditViewController: UIViewController {
 
+    var viewId: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +27,10 @@ class EditViewController: UIViewController {
         var textView = UITextView()
         textView.frame = CGRectMake(100, 300, 100, 100)
         view.addSubview(textView)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        println(viewId!)
     }
     
     func back() {

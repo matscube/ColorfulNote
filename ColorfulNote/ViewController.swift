@@ -10,6 +10,7 @@ import UIKit
 
 class ColorfulView: UIView {
     
+    var id: Int!
     override init(frame: CGRect) {
         super.init(frame: frame)
 /*        let textView = UITextView()
@@ -27,7 +28,7 @@ class ColorfulView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var viewTapped: ((view: UIView) -> Void)?
+    var viewTapped: ((view: ColorfulView) -> Void)?
     func edit() {
         viewTapped?(view: self)
     }
@@ -55,6 +56,7 @@ class ColorfulView: UIView {
 
 class ViewController: UIViewController {
 
+    var nextViewId: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -118,11 +120,13 @@ class ViewController: UIViewController {
         if state == UIGestureRecognizerState.Began {
             let frame = CGRectMake(0, 0, 50, 50)
             newView = ColorfulView(frame: frame)
+            newView!.id = nextViewId
+            nextViewId++
             newView!.backgroundColor = color
             newView!.center = CGPointMake(touch.x, touch.y)
             newView!.viewTapped = {
-                [unowned self] (view: UIView) in
-                self.edit()
+                [unowned self] (view: ColorfulView) in
+                self.edit(view.id)
             }
             view.addSubview(newView!)
         } else if state == UIGestureRecognizerState.Changed {
@@ -138,8 +142,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func edit() {
+    private var editViewId: Int?
+    func edit(viewId: Int) {
+        editViewId = viewId
         self.performSegueWithIdentifier("EditSegue", sender: self)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nextVC = segue.destinationViewController as EditViewController
+        nextVC.viewId = editViewId!
     }
     
 }
