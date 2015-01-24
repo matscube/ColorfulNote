@@ -143,13 +143,16 @@ class ViewController: UIViewController {
     }
 
     private var editViewId: Int?
+    private var editViewColor: UIColor?
     func edit(viewId: Int) {
         editViewId = viewId
+        editViewColor = views[viewId].backgroundColor
         self.performSegueWithIdentifier("EditSegue", sender: self)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nextVC = segue.destinationViewController as EditViewController
         nextVC.viewId = editViewId!
+        nextVC.color = editViewColor
     }
     
 }

@@ -11,6 +11,8 @@ import UIKit
 class EditViewController: UIViewController {
 
     var viewId: Int!
+    var color: UIColor!
+    let textView = UITextView()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,16 +26,20 @@ class EditViewController: UIViewController {
         button.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(button)
         
-        var textView = UITextView()
-        textView.frame = CGRectMake(100, 300, 100, 100)
+        textView.frame = CGRectMake(10, 300, view.bounds.width - 10 * 2, view.bounds.height - 300 - 10)
+        textView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        textView.layer.borderWidth = 1
         view.addSubview(textView)
     }
     
     override func viewWillAppear(animated: Bool) {
+        textView.backgroundColor = color
         println(viewId!)
     }
     
     func back() {
+        println(textView.text)
+        // Save text
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
