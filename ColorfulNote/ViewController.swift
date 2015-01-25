@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         let touch = gesture.locationInView(view)
         let state = gesture.state
         if state == UIGestureRecognizerState.Began {
-            let frame = CGRectMake(0, 0, 50, 50)
+            let frame = CGRectMake(0, 0, 150, 150)
             newView = ColorfulView(frame: frame)
             newView!.id = nextViewId
             nextViewId++
