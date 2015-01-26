@@ -22,6 +22,7 @@ class ColorfulView: UIView {
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         self.addGestureRecognizer(tapGesture)
+        
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -121,6 +122,7 @@ class ViewController: UIViewController {
             let frame = CGRectMake(0, 0, 150, 150)
             newView = ColorfulView(frame: frame)
             newView!.id = nextViewId
+
             nextViewId++
             newView!.backgroundColor = color
             newView!.center = CGPointMake(touch.x, touch.y)
@@ -129,6 +131,7 @@ class ViewController: UIViewController {
                 self.edit(view.id)
             }
             view.addSubview(newView!)
+
         } else if state == UIGestureRecognizerState.Changed {
             newView!.center = CGPointMake(touch.x, touch.y)
         } else if state == UIGestureRecognizerState.Ended {

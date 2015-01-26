@@ -35,11 +35,16 @@ class EditViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         textView.backgroundColor = color
         println(viewId!)
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        textView.text = userDefaults.valueForKey("text_\(viewId!)") as String?
     }
     
     func back() {
         println(textView.text)
         // Save text
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setValue(textView.text, forKey: "text_\(viewId!)")
+
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
