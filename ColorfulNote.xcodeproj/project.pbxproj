@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215CFE421A7803A5008C401E /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFE411A7803A5008C401E /* DBManager.swift */; };
 		2172155D1A6B889700E3F464 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2172155C1A6B889700E3F464 /* EditViewController.swift */; };
 		21AEE8501A53253700B009DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AEE84F1A53253700B009DC /* AppDelegate.swift */; };
 		21AEE8521A53253700B009DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AEE8511A53253700B009DC /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		215CFE411A7803A5008C401E /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		2172155C1A6B889700E3F464 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		21AEE84A1A53253700B009DC /* ColorfulNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorfulNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AEE84E1A53253700B009DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				21AEE8581A53253700B009DC /* LaunchScreen.xib */,
 				21AEE84D1A53253700B009DC /* Supporting Files */,
 				2172155C1A6B889700E3F464 /* EditViewController.swift */,
+				215CFE411A7803A5008C401E /* DBManager.swift */,
 			);
 			path = ColorfulNote;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				21AEE8521A53253700B009DC /* ViewController.swift in Sources */,
 				21AEE8501A53253700B009DC /* AppDelegate.swift in Sources */,
 				2172155D1A6B889700E3F464 /* EditViewController.swift in Sources */,
+				215CFE421A7803A5008C401E /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

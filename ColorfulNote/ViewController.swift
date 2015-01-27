@@ -115,6 +115,7 @@ class ViewController: UIViewController {
         create(gesture, color: color)
     }
     
+    let dbManager = DBManager()
     func create(gesture: UIPanGestureRecognizer, color: UIColor) {
         let touch = gesture.locationInView(view)
         let state = gesture.state
@@ -122,6 +123,7 @@ class ViewController: UIViewController {
             let frame = CGRectMake(0, 0, 150, 150)
             newView = ColorfulView(frame: frame)
             newView!.id = nextViewId
+            dbManager.resetText(nextViewId)
 
             nextViewId++
             newView!.backgroundColor = color
@@ -137,6 +139,13 @@ class ViewController: UIViewController {
         } else if state == UIGestureRecognizerState.Ended {
             views.append(newView!)
             newView = nil
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        for view in views {
+            
         }
     }
 

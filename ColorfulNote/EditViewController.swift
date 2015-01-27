@@ -13,6 +13,7 @@ class EditViewController: UIViewController {
     var viewId: Int!
     var color: UIColor!
     let textView = UITextView()
+    let dbManager = DBManager()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,17 +35,11 @@ class EditViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         textView.backgroundColor = color
-        println(viewId!)
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        textView.text = userDefaults.valueForKey("text_\(viewId!)") as String?
+        textView.text = dbManager.getText(viewId!)
     }
     
     func back() {
-        println(textView.text)
-        // Save text
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setValue(textView.text, forKey: "text_\(viewId!)")
-
+        dbManager.saveText(viewId!, text: textView.text)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
